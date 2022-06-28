@@ -1,0 +1,12 @@
+total 120
+drwxrwxr-x 2 bsoxx bsoxx 4096 Wax 27 05:07 .
+drwxrwxr-x 6 bsoxx bsoxx 4096 Wax 27 07:17 ..
+-rwxrw-r-- 1 bsoxx bsoxx   36 Wax 27 07:45 0-hello_world
+-rwxrw-r-- 1 bsoxx bsoxx   27 Wax 28 02:48 1-confused_smiley
+-rwxrw-r-- 1 bsoxx bsoxx   28 Wax 28 03:33 2-hellofile
+-rwxrw-r-- 1 bsoxx bsoxx   39 Wax 28 02:59 3-twofiles
+-rwxrw-r-- 1 bsoxx bsoxx   29 Wax 28 02:59 4-lastlines
+-rwxrw-r-- 1 bsoxx bsoxx   29 Wax 28 02:59 5-firstlines
+-rwxrw-r-- 1 bsoxx bsoxx   36 Wax 28 03:38 6-third_line
+-rwxrw-r-- 1 bsoxx bsoxx   78 Wax 28 02:59 7-file
+-rwxrw-r-- 1 bsoxx bsoxx   36 Wax 28 03:01 8-cwd_state
