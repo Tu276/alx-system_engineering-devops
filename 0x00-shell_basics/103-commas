@@ -1,1 +1,2 @@
-ls xamp
+#!/bin/bash
+ls -xamp
