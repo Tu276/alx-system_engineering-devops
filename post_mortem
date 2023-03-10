@@ -1,0 +1,23 @@
+Issue Summary:
+On March 5, 2023, our web application experienced a service outage from 9:00 AM to 12:00 PM EST, affecting approximately 50% of our users. The root cause of the outage was a configuration error in the load balancer.
+
+Timeline:
+
+9:00 AM: The issue was detected when our monitoring system triggered an alert for high server response times.
+9:05 AM: Our team began investigating the issue, starting with reviewing server logs and checking network connectivity.
+9:30 AM: After ruling out network issues and identifying the issue was specific to the load balancer, we began checking its configuration settings.
+10:15 AM: Initial assumptions were made that the issue was due to a recent change made to the load balancer's configuration.
+11:00 AM: Further investigation revealed that the issue was actually caused by a misconfiguration in the load balancer's SSL certificates.
+11:30 AM: The incident was escalated to our senior engineering team for further assistance.
+12:00 PM: The issue was resolved by correcting the load balancer's SSL certificate configuration.
+Root cause and resolution:
+The root cause of the outage was traced back to a misconfiguration in the load balancer's SSL certificate settings. Specifically, the certificate chain was not correctly configured, leading to connection errors for some users. The issue was resolved by correcting the SSL certificate configuration on the load balancer.
+
+Corrective and preventative measures:
+To prevent a similar outage in the future, we will be implementing the following corrective and preventative measures:
+
+Improve our monitoring system to provide more granular alerts for SSL certificate issues.
+Establish more rigorous testing procedures for load balancer configuration changes.
+Provide additional training for our engineering team to ensure proper configuration of SSL certificates in the load balancer.
+Conduct a review of our overall system architecture to identify any other potential single points of failure.
+We apologize for any inconvenience caused by the outage and appreciate your patience and understanding as we worked to resolve the issue. If you have any further questions or concerns, please don't hesitate to contact us.
