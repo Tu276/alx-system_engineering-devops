@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# bashscriot displays the contents of a directory in list format 
+# without the first dash 
+
+for file in *
+do
+    if [[ ! "$file" =~ ^\. ]]
+    then
+        filename=${file#*-}
+        echo "$filename"
+    fi
+done
