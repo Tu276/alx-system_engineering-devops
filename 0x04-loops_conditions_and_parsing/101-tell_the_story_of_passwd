@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#displays contents of etc/passwd
+
+# Read the file /etc/passwd line by line
+while IFS=: read -r username x userid groupid x name home shell
+do
+  # Get the encrypted password from /etc/shadow
+  password=$(awk -F: -v user=$username '{if ($1 == user) print $2}' /etc/shadow)
+  
+  # Get additional info about the user using the "finger" command
+  userinfo=$(finger "$username" | head -1)
+  
+  # Print the user info in the specified format
+  echo "The user $username is part of the $groupid gang, lives in $home and rides $shell. User ID's place is protected by the passcode $password, more info about the user here: $userinfo"
+  
+done < /etc/passwd
