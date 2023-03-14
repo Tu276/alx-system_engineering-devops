@@ -1,1 +1,1 @@
-Providing outage details
+processes and signals
