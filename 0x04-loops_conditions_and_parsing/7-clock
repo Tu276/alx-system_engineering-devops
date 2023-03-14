@@ -2,17 +2,17 @@
 #displays clock
 
 hour=0
-
-while [[ "$hour" -lt 12 ]]
+minutes=1
+while [ $hour -le 12 ]
 do
-    echo Hour: "$hour"
-    minute=1
-    while [[ "$minute" -lt 60 ]]
+    echo Hour: $hour
+
+    while [ $minutes -le 59 ]
     do
-        echo "$minute"
-        minute=$((minute + 1))
-
+	echo $minutes
+	((minutes++))
     done
-    hour=$((hour + 1))
+    minutes=1
 
+    ((hour++))
 done
