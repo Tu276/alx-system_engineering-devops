@@ -1,4 +1,3 @@
-#this script 
-#this script 
-#this script
-#this script
+#!/usr/bin/env bash
+# This script that displays a list of currently running processes.
+ps -aux --forest
