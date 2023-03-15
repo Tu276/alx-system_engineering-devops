@@ -28,12 +28,12 @@ int main(void)
 
         if (pid == 0)
         {
-            // Child process
+            /* Child process */
             exit(EXIT_SUCCESS);
         }
         else
         {
-            // Parent process
+            /* Parent process */
             printf("Zombie process created, PID: %d\n", pid);
         }
     }
