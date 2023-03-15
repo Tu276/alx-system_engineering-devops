@@ -1,4 +1,15 @@
-#this script 
-#this script 
-#this script
-#this script
+#!/usr/bin/env bash
+# This script process and pid file
+
+echo $$ > /var/run/myscript.pid
+
+# trap signals
+trap 'echo "I hate the kill command when receiving a SIGTERM signal"' SIGTERM
+trap 'echo "Y U no love me?!"' SIGINT
+trap 'rm /var/run/myscript.pid; exit' SIGQUIT SIGTERM
+
+# loop indefinitely
+while true; do
+  echo "To infinity and beyond"
+  sleep 1
+done
