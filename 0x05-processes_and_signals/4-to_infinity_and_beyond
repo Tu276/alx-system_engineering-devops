@@ -1,4 +1,8 @@
-#this script 
-#this script 
-#this script
-#this script
+#!/usr/bin/env bash
+# This script displays To infinity and beyond indefinitely.
+count=1
+while [ $count -eq 1 ]
+do
+    echo To infinity and beyond
+    sleep 2
+done
