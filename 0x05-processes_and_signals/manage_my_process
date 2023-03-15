@@ -1,4 +1,10 @@
-#this script 
-#this script 
-#this script
-#this script
+#!/usr/bin/env bash
+# This script process and pid file
+
+while true; do
+  # write message to file
+  echo "I am alive!" >> /tmp/my_process
+  
+  # pause for 2 seconds
+  sleep 2
+done
