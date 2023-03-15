@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #This script manages process
 
+
 PIDFILE=/var/run/my_process.pid
 SCRIPTNAME=manage_my_process
 
@@ -17,10 +18,9 @@ start() {
 stop() {
     if [ -f "$PIDFILE" ]; then
         PID=$(cat "$PIDFILE")
-        echo "Stopping $SCRIPTNAME"
+        echo "$SCRIPTNAME stopped"
         kill "$PID"
         rm "$PIDFILE"
-        echo "$SCRIPTNAME stopped"
     else
         echo "$SCRIPTNAME is not running."
     fi
