@@ -3,8 +3,6 @@
 
 #!/usr/bin/env bash
 
-#!/usr/bin/env bash
-
 PIDFILE=/var/run/my_process.pid
 SCRIPTNAME=manage_my_process
 
@@ -12,7 +10,6 @@ start() {
     if [ -f "$PIDFILE" ]; then
         echo "$SCRIPTNAME is already running."
     else
-        echo "Starting $SCRIPTNAME"
         /bin/bash /tmp/my_process &
         echo $! > "$PIDFILE"
         echo "$SCRIPTNAME started"
@@ -54,4 +51,3 @@ case "$1" in
 esac
 
 exit 0
-
