@@ -1,4 +1,3 @@
-#this script 
-#this script 
-#this script
-#this script
+#!/usr/bin/env bash
+# This script stops 7-highlander.
+pkill -f -9 7-highlander
