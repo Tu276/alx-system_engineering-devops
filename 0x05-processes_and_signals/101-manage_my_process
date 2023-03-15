@@ -3,26 +3,28 @@
 
 #!/usr/bin/env bash
 
+#!/usr/bin/env bash
+
 PIDFILE=/var/run/my_process.pid
 SCRIPTNAME=manage_my_process
 
 start() {
-    if [ -f $PIDFILE ]; then
+    if [ -f "$PIDFILE" ]; then
         echo "$SCRIPTNAME is already running."
     else
         echo "Starting $SCRIPTNAME"
         /bin/bash /tmp/my_process &
-        echo $! > $PIDFILE
+        echo $! > "$PIDFILE"
         echo "$SCRIPTNAME started"
     fi
 }
 
 stop() {
-    if [ -f $PIDFILE ]; then
-        PID=$(cat $PIDFILE)
+    if [ -f "$PIDFILE" ]; then
+        PID=$(cat "$PIDFILE")
         echo "Stopping $SCRIPTNAME"
-        kill $PID
-        rm $PIDFILE
+        kill "$PID"
+        rm "$PIDFILE"
         echo "$SCRIPTNAME stopped"
     else
         echo "$SCRIPTNAME is not running."
@@ -52,3 +54,4 @@ case "$1" in
 esac
 
 exit 0
+
