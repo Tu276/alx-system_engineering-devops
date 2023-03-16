@@ -1,0 +1,49 @@
+                       +---------------+
+                       |   Firewall 1  |
+                       +---------------+
+                                 |
+                                 |
+                       +---------------+
+                       |   Firewall 2  |
+                       +---------------+
+                                 |
+                                 |
+                       +---------------+
+                       |   Firewall 3  |
+                       +---------------+
+                                 |
+                                 |
+                          +--------+--------+
+                          |   Load Balancer |
+                          +--------+--------+
+                                   |
+          +------------------------+------------------------+
+          |                                                 |
+    +-----+-----+                                   +-------+--------+
+    |  Server 1 |                                   |   Server 2    |
+    |           |                                   |              |
+    |   App     |                                   |     App      |
+    |  Server   |                                   |   Server     |
+    |           |                                   |              |
+    |           |                                   |              |
+    |   Nginx   |                                   |     Nginx    |
+    |           |                                   |              |
+    |           |                                   |              |
+    |           |                                   |              |
+    |   MySQL   |                                   |     MySQL    |
+    |           |                                   |              |
+    +-----------+                                   +--------------+
+
+We added three firewalls to protect our servers from unauthorized access, malicious attacks and intrusions.
+We added an SSL certificate to serve www.foobar.com over HTTPS to encrypt the traffic and ensure that data exchanged between the user's computer and our servers is secured and protected.
+We added three monitoring clients to collect data and monitor the performance, availability and health of our servers, applications and databases.
+The firewalls are used to filter and control incoming and outgoing traffic, and to block unauthorized access and malicious attacks.
+Traffic is served over HTTPS to encrypt the data and prevent interception, tampering and eavesdropping by unauthorized parties.
+Monitoring is used to detect and diagnose issues, identify performance bottlenecks, and improve the reliability and uptime of our web infrastructure.
+The monitoring tool collects data by installing agents on each server, which send logs and metrics to a central data collector or monitoring service.
+If we want to monitor the web server QPS (Queries Per Second), we can use a monitoring tool that supports this metric, and configure it to collect and display the QPS data in a dashboard or alert us if the QPS goes above or below a certain threshold.
+Some issues with this infrastructure:
+
+Terminating SSL at the load balancer level is an issue because it can expose the unencrypted traffic to the load balancer, which can be a point of vulnerability or attack.
+Having only one MySQL server capable of accepting writes is an issue because it can create a single point of failure and data loss if the server fails or goes down.
+Having servers with all the same components (database, web server and application server) might be a problem because it can limit our ability to scale, optimize and customize our infrastructure to meet specific requirements and needs.
