@@ -1,0 +1,35 @@
+Server: A server is a computer or a system that stores and manages data, files, and applications that can be accessed by other computers or devices on a network. In our case, the server will host the website that we want to make available to the users.
+
+Domain name: A domain name is a unique name that identifies a website on the internet. It is used to translate the IP address of the server into a human-readable name. In our case, the domain name is foobar.com, and we will configure a www record that points to our server's IP address.
+
+DNS record: The www record is a DNS record that points to the web server that hosts the website. It tells the DNS server that when a user types www.foobar.com in their browser, they should be directed to the server with the IP address specified in the record.
+
+Web server: A web server is a software application that handles HTTP requests from clients (web browsers) and responds with HTML pages, images, and other resources. In our case, we will use Nginx as our web server.
+
+Application server: An application server is a software framework that provides a platform for running web applications. It executes the code that generates dynamic content and interacts with the web server and the database. In our case, we will use a Python-based application server such as Flask or Django to run our application.
+
+Application files: The application files contain the code base for our website. This includes HTML templates, CSS stylesheets, JavaScript files, and server-side code written in Python.
+
+Database: A database is a software application that stores and manages data in a structured way. It allows the website to persist data and retrieve it when needed. In our case, we will use MySQL as our database.
+
+Now, let's discuss how the components of our infrastructure will work together to serve the user's request:
+
+When a user types www.foobar.com in their browser, the request is sent to the DNS server.
+
+The DNS server looks up the IP address of the server associated with the www record of foobar.com and returns it to the user's computer.
+
+The user's computer sends an HTTP request to the IP address of the server, asking for the website.
+
+The web server receives the request and forwards it to the application server.
+
+The application server executes the code that generates the HTML content of the website, retrieves data from the database, and sends the response back to the web server.
+
+The web server receives the response and sends it back to the user's computer, which displays the website in their browser.
+
+Now, let's discuss the issues with our infrastructure:
+
+SPOF: Our infrastructure has a single point of failure (SPOF) because it uses only one server. If the server goes down, the website will be inaccessible. To mitigate this issue, we could use load balancing and have multiple servers running in parallel to distribute the load and provide redundancy.
+
+Downtime during maintenance: When we need to deploy new code or update the web server or the database, we will need to take the website offline temporarily. This will result in downtime for the users. To mitigate this issue, we could use a rolling deployment strategy that updates the servers one at a time and redirects the traffic to the updated servers gradually.
+
+Scalability: Our infrastructure is not scalable, which means that it cannot handle a large amount of incoming traffic. To scale our infrastructure, we could add more servers and use load balancing to distribute the traffic across them. We could also use a CDN (Content Delivery Network) to cache the content and serve it
