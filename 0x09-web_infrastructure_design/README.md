@@ -1,1 +1,7 @@
-simple server design 
+The main difference between the two infrastructures is that the three-server infrastructure has additional servers for load balancing and redundancy. In the one-server infrastructure, there is only one server performing all the roles, whereas in the three-server infrastructure, there are separate servers for the web server, application server, and database server.
+
+Another key difference is that the three-server infrastructure has a load balancer that distributes traffic between the two web servers, whereas the one-server infrastructure does not have a load balancer. This provides redundancy and ensures high availability in case one of the web servers goes down.
+
+Furthermore, the three-server infrastructure uses a primary-replica cluster for the database, whereas the one-server infrastructure uses a standalone MySQL database. The primary-replica cluster provides better scalability and redundancy for the database, allowing for read scaling and automatic failover in case the primary node fails.
+
+Overall, the three-server infrastructure is more scalable, fault-tolerant, and provides better performance and availability than the one-server infrastructure. However, it also requires more resources and configuration, and comes with additional complexity and costs.
