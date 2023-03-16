@@ -1,4 +1,35 @@
-Design a three-server web infrastructure that hosts the website www.foobar.com.
+
+                                          +--------------+
+                                           |  Web Server 1 |
+                                           |   (Nginx)    |
+                                           +------+-------+
+                                                  |
+                +---------------------------------+---------------------------------+
+                |                                                                         |
+                |                                                                         |
+     +----------v---------+                                                   +----------v---------+
+     | Application Server |                                                   | Application Server |
+     |                     |                                                   |                     |
+     |                     |                                                   |                     |
+     | +-----------------+ |                                                   | +-----------------+ |
+     | |    Application  | |                                                   | |    Application  | |
+     | |     Files 1     | |                                                   | |     Files 2     | |
+     | +-----------------+ |                                                   | +-----------------+ |
+     +----------+----------+                                                   +----------+----------+
+                |                                                                         |
+                |                                                                         |
+                +---------------------+-----------------------------------+-------------+
+                                      |                                   |
+                                      |                                   |
+                           +----------v---------+                 +----------v---------+
+                           |     Load Balancer   |                 |      Database       |
+                           |      (HAproxy)      |                 |       (MySQL)       |
+                           +----------+---------+                 +----------+---------+
+                                      |                                   |
+                                      |                                   |
+                                      +-----------------------------------+
+                                             MySQL Replication
+design a three-server web infrastructure that hosts the website www.foobar.com.
 
 Server 1: Web server + Load Balancer
 Server 2: Application server
