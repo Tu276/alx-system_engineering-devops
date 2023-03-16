@@ -1,0 +1,23 @@
+Design a three-server web infrastructure that hosts the website www.foobar.com.
+
+Server 1: Web server + Load Balancer
+Server 2: Application server
+Server 3: Database server
+Let's go through the requirements and add the necessary components to our infrastructure:
+
+Web server: We will use Nginx as our web server, just like in the previous example.
+Load balancer: We will add an HAproxy load balancer to distribute traffic between the two web servers. This will provide redundancy and ensure high availability in case one of the web servers goes down.
+Application server: We will use a Python-based application server like Flask or Django to run our application.
+Application files: The application files contain the code base for our website, just like in the previous example.
+Database server: We will use MySQL as our database server, just like in the previous example.
+Now let's discuss some specifics about this infrastructure:
+
+Load balancer: The load balancer is configured with a round-robin algorithm, which distributes requests evenly between the two web servers. The algorithm works by sending the first request to the first web server, the second request to the second web server, and so on. This ensures that no single server is overloaded with requests.
+Active-Active vs. Active-Passive setup: Our load balancer is configured for an Active-Active setup, where both web servers are active at the same time and share the incoming traffic load. In an Active-Passive setup, only one web server is active at a time, and the other server is in standby mode, ready to take over in case the active server fails.
+Primary-Replica cluster: In our database setup, we will have one primary node and one replica node. The primary node receives all the write requests and forwards them to the replica node, which applies them and keeps in sync with the primary. The replica node can serve read requests to the application server, reducing the load on the primary node and providing read scaling.
+Primary vs. Replica node: The primary node is responsible for handling all the write requests and ensuring that the data is consistent across the cluster. The replica node is responsible for keeping in sync with the primary node and serving read requests. The application server connects to the primary node for write requests and to the replica node for read requests.
+Now let's discuss the issues with our infrastructure:
+
+SPOF: Our infrastructure still has a single point of failure, which is the load balancer. If the load balancer goes down, the website will be inaccessible. To mitigate this issue, we could add a backup load balancer or use a cloud load balancing service.
+Security issues: Our infrastructure lacks a firewall and HTTPS encryption, leaving it vulnerable to attacks. To mitigate this issue, we could add a firewall to restrict incoming traffic and use HTTPS to encrypt the communication between the server and the client.
+Monitoring: We have not added any monitoring tools to our infrastructure, which makes it difficult to detect and troubleshoot issues. To mitigate this issue, we could use monitoring tools like Nagios or Prometheus to monitor the health of our servers and services.
