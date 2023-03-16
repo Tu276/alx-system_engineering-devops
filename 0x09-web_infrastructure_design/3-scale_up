@@ -1,0 +1,60 @@
++---------------+
+|   Firewall 1  |
++---------------+
+          |
+          |
++---------------+
+|   Firewall 2  |
++---------------+
+          |
+          |
++---------------+
+|   Firewall 3  |
++---------------+
+          |
+          |
++--------+--------+
+|   Load Balancer |
++--------+--------+
+   |          |
+   |          |
+   |          |
++--+--+  +---+----+
+| LB1 |  |  LB2   |
++-----+  +--------+
+   |          |
++--+----+ +---+----+
+|Web 1  | |Web 2   |
+|Nginx 1| |Nginx 2 |
++-------+ +--------+
+   |          |
++--+----+ +---+----+
+| App 1 | | App 2  |
+|Server1| |Server2 |
++-------+ +--------+
+   |          |
++--+----+ +---+----+
+|MySQL 1| |MySQL 2 |
++-------+ +--------+
+
+One additional server: The addition of another server is necessary in order to split the components of the web infrastructure onto different machines, allowing for better resource allocation and improved performance.
+
+HAProxy load balancer configured as a cluster with the other one: The use of a load balancer is crucial in distributing incoming traffic across multiple servers, providing high availability and minimizing downtime.
+
+Split components (web server, application server, database) with their own server: By separating each component of the web infrastructure onto different servers, we can achieve better performance, reliability, and security. This separation allows for dedicated resources for each component, which helps to prevent one component from affecting the others.
+
+HAProxy load balancers: The use of two load balancers configured as a cluster helps to provide high availability and minimize downtime. If one load balancer fails, the other can take over, ensuring that traffic is still being distributed.
+
+Nginx web servers: Nginx is a popular web server that is known for its high performance and low resource usage. By using two Nginx web servers, we can distribute the load of incoming traffic and improve response times.
+
+Application servers: These servers host the application code and are responsible for executing it. By separating the application server from the web server, we can optimize performance and improve scalability.
+
+MySQL database servers: These servers host the MySQL database, which stores the website's data. By separating the database from the web server, we can improve performance and scalability.
+
+Overall, this infrastructure design aims to achieve better performance, scalability, and reliability by splitting the components of the web infrastructure onto different servers and utilizing load balancers for high availability.
+
+the above infrastructure is better for scaling because it separates the different components of the web application (web server, application server, and database) onto their own dedicated servers. This allows for more efficient use of resources, as each server can be optimized for its specific role, and can be scaled independently as needed.
+
+In addition, by adding a load balancer configured as a cluster, the infrastructure is able to handle higher traffic volumes and can provide high availability by distributing traffic across multiple servers. This also allows for better fault tolerance, as if one server goes down, the load balancer can redirect traffic to other available servers.
+
+Overall, this architecture provides more flexibility and scalability compared to the previous infrastructure with a single server, as it allows for more granular control over resources and enables the system to handle higher traffic volumes while maintaining availability and performance.
