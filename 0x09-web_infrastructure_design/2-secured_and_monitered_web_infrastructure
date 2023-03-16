@@ -47,3 +47,36 @@ Some issues with this infrastructure:
 Terminating SSL at the load balancer level is an issue because it can expose the unencrypted traffic to the load balancer, which can be a point of vulnerability or attack.
 Having only one MySQL server capable of accepting writes is an issue because it can create a single point of failure and data loss if the server fails or goes down.
 Having servers with all the same components (database, web server and application server) might be a problem because it can limit our ability to scale, optimize and customize our infrastructure to meet specific requirements and needs.
+
+                        +-----------------+
+                        |    Load Balancer |
+                        +-----------------+
+                            |            |
+                            |            |
+              +-------------+            +-------------+
+              |                                          |
+              v                                          v
+  +-----------------+                          +-----------------+
+  |  Web Server 1   |                          |  Web Server 2   |
+  +-----------------+                          +-----------------+
+  |    Firewall     |                          |    Firewall     |
+  +-----------------+                          +-----------------+
+              |                                          |
+              |                                          |
+              v                                          v
+  +-----------------+                          +-----------------+
+  | Application Srv |                          | Application Srv |
+  +-----------------+                          +-----------------+
+  |    Firewall     |                          |    Firewall     |
+  +-----------------+                          +-----------------+
+              |                                          |
+              |                                          |
+              v                                          v
+      +-----------------+                      +-----------------+
+      |   MySQL DB     |                      |   MySQL DB     |
+      +-----------------+                      +-----------------+
+      |    Firewall     |                      |    Firewall     |
+      +-----------------+                      +-----------------+
+
+      SSL Certificate
+      Monitoring Clients
