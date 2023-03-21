@@ -1,4 +1,4 @@
-
+# using Puppet to make changes to our configuration file
 include stdlib
 file_line { 'Declare identity file':
   path    => '/etc/ssh/ssh_config',
