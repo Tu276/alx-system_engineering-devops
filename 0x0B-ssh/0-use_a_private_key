@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#script that uses ssh to connect to remoteo server
+
+ssh -i ~/.ssh/school ubuntu@100.26.159.174
