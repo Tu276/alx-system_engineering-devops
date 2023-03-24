@@ -3,55 +3,20 @@
 
 sudo apt-get -y update && sudo apt-get -y install nginx
 ufw allow 'Nginx HTTP'
-
-
-
-# Create the index.html file
-#echo "<h1>Hello World!</h1>" | sudo tee /var/www/html/index.nginx-debian.html > /dev/null
-
-# Check if the default file already exists
-# if [ -f /etc/nginx/sites-available/default ]
-# then
-#   # Rename the existing default file to default_old
-#   sudo mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default_old
-# fi
-
-# # Create a new server block for Nginx
-# sudo bash -c 'cat << EOF > /etc/nginx/sites-available/default
-# server {
-#     listen 80 default_server;
-#     listen [::]:80 default_server;
-
-#     root /var/www/html/index.nginx-debian.html;
-#     index index.html index.htm index.nginx-debian.html;
-
-#     location / {
-#         try_files \$uri \$uri/ =404;
-#     }
-
-#     location = / {
-#         echo "Hello World!";
-#     }
-# }
-# EOF'
-
-# #return *****go through error ****
-# ip_address=$(hostname -I | awk '{print $1}')
-# text="localhost"
-# sed -i "s/\b\([0-9]\{1,3\}\.\)\{3\}[0-9]\{1,3\}\b/$ip_address/g" /etc/hosts
-# echo "$ip_address $text" >> /etc/hosts
-
-# # Enable the new server block
-# sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
-
-echo 'Hello World!' > /var/www/html/index.html
-
-ip_address=$(hostname -I | awk '{print $1}')
-text="localhost"
-sed -i "s/\b\([0-9]\{1,3\}\.\)\{3\}[0-9]\{1,3\}\b/$ip_address/g" /etc/hosts
-echo "$ip_address $text" >> /etc/hosts
+mv /usr/share/nginx/html/index.html /usr/share/nginx/html/index.html.bak
+echo 'Hello World!' > /usr/www/html/index.html
 
 # Restart Nginx
 sudo service nginx restart
 
 service nginx start
+
+
+# On an Nginx server, the files stored under "/var/www/html/" and "/usr/share/nginx/html/" serve different purposes.
+
+# /var/www/html/: This directory is typically used to store the files of web applications, such as HTML, CSS, JavaScript, and PHP files. These files are often specific to a particular web application that is hosted on the server, and they are usually managed by the system administrator or the web developer.
+
+# /usr/share/nginx/html/: This directory contains the default Nginx web pages, which are used to serve up basic web content when no other content is specified. For example, when someone visits your website's domain name without specifying a specific file or folder, Nginx will serve up the default content stored in this directory.
+
+# In summary, while both directories are used to store web files, the "/var/www/html/" directory is used for web applications specific to your website, while the "/usr/share/nginx/html/" directory is used for default Nginx web pages.
+
