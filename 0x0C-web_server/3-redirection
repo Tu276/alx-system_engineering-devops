@@ -1,32 +1,28 @@
 #!/usr/bin/env bash
-# installs nginx and conifgures it to redirect
+# installs nginx and conifgures it to serve a page with a unique id
+
+sudo apt-get -y update && sudo apt-get -y install nginx
+ufw allow 'Nginx HTTP'
+sudo cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bak
+
+echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
+
+sudo sed -i '/server_name _;/ {
+  s/server_name _;/server_name _\/redirect_me/;
+  s/location \/ {/location \/ {\n\n\treturn 301 https:\/\/example.com\/new-page;/;
+}' /etc/nginx/sites-available/default
+
+# Restart Nginx
+sudo service nginx restart
+
+service nginx start
 
 
-# Install Nginx
-sudo apt-get update
-sudo apt-get install nginx
+# On an Nginx server, the files stored under "/var/www/html/" and "/usr/share/nginx/html/" serve different purposes.
 
-# Create a new server block configuration file
-sudo tee /etc/nginx/sites-available/example.com >/dev/null <<EOF
-server {
-    listen 80;
-    listen [::]:80;
+# /var/www/html/: This directory is typically used to store the files of web applications, such as HTML, CSS, JavaScript, and PHP files. These files are often specific to a particular web application that is hosted on the server, and they are usually managed by the system administrator or the web developer.
 
-    server_name example.com;
+# /usr/share/nginx/html/: This directory contains the default Nginx web pages, which are used to serve up basic web content when no other content is specified. For example, when someone visits your website's domain name without specifying a specific file or folder, Nginx will serve up the default content stored in this directory.
 
-    location /redirect_me {
-        return 301 /;
-    }
+# In summary, while both directories are used to store web files, the "/var/www/html/" directory is used for web applications specific to your website, while the "/usr/share/nginx/html/" directory is used for default Nginx web pages.
 
-    # ... other server configuration ...
-}
-EOF
-
-# Create a symbolic link to enable the server block configuration
-sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
-
-# Test the configuration file for syntax errors
-sudo nginx -t
-
-# Reload Nginx to apply the new configuration
-sudo systemctl reload nginx
